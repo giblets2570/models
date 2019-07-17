@@ -4,7 +4,6 @@ import re
 import os.path
 import pandas as pd
 from sklearn.externals import joblib
-import io
 import requests
 
 teams = [
@@ -24,10 +23,14 @@ teams = [
 team_threshold = 0.1
 
 def load_model(name):
-    return joblib.load(f'./nesta_score_label/models/{name}')
+    filepath = os.path.realpath(__file__)
+    dirpath = '/'.join(filepath.split('/')[:-1])
+    return joblib.load(f'{dirpath}/models/{name}')
 
 def load_keywords():
-    with open('./nesta_score_label/models/saved_keywords.csv', 'r') as file:
+    filepath = os.path.realpath(__file__)
+    dirpath = '/'.join(filepath.split('/')[:-1])
+    with open(f'{dirpath}/models/saved_keywords.csv', 'r') as file:
         all_unique_kws = [w for w in file.read().split('\n')[1:] if len(w)]
     return all_unique_kws
 
