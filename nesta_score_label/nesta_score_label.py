@@ -5,6 +5,7 @@ import os.path
 import pandas as pd
 from sklearn.externals import joblib
 import requests
+from pathlib import Path
 
 teams = [
     'Innovation - Mapping',
@@ -23,14 +24,14 @@ teams = [
 team_threshold = 0.1
 
 def load_model(name):
-    filepath = os.path.realpath(__file__)
-    dirpath = '/'.join(filepath.split('/')[:-1])
-    return joblib.load(f'{dirpath}/models/{name}')
+    data_folder =  Path("./models").resolve()
+    file_to_open = data_folder / name
+    return joblib.load(str(file_to_open))
 
 def load_keywords():
-    filepath = os.path.realpath(__file__)
-    dirpath = '/'.join(filepath.split('/')[:-1])
-    with open(f'{dirpath}/models/saved_keywords.csv', 'r') as file:
+    data_folder =  Path("./models").resolve()
+    file_to_open = data_folder / 'saved_keywords.csv'
+    with open(str(file_to_open), 'r') as file:
         all_unique_kws = [w for w in file.read().split('\n')[1:] if len(w)]
     return all_unique_kws
 
