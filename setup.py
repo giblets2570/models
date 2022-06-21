@@ -11,7 +11,7 @@ requirements = [
     'chardet==3.0.4',
     'idna==2.8',
     'joblib==0.13.2',
-    'numpy==1.16.4',
+    'numpy==1.22.0',
     'pandas==0.24.2',
     'python-dateutil==2.8.0',
     'pytz==2019.1',
