@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 requirements = [
     'Click>=6.0',
-    'certifi==2019.6.16',
+    'certifi==2022.12.7',
     'chardet==3.0.4',
     'idna==2.8',
     'joblib==0.13.2',
